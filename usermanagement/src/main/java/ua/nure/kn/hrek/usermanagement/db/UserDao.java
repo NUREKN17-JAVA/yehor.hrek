@@ -9,7 +9,7 @@ public interface UserDao {
 	
 	void update(User user) throws DatabaseException;
 	
-	void dalete(User user) throws DatabaseException;
+	void delete(User user) throws DatabaseException;
 	
 	User find(Long id) throws DatabaseException;
 	
