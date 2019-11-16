@@ -99,66 +99,66 @@ public class UserTest extends TestCase{
 	
 	@Test
 	public void testGetAgeCommon() {
-		user.setDateOfBirthday(dateOfBirthdayCommon);
+		user.setDateOfBirth(dateOfBirthdayCommon);
 		assertEquals(this.dateOfBirthdayCommonCorrect, user.getAge());
 	}
 	
 	@Test
 	public void testGetAge1January() {
-		user.setDateOfBirthday(dateOfBirthday1January);
+		user.setDateOfBirth(dateOfBirthday1January);
 		assertEquals(this.dateOfBirthday1JanuaryCorrect, user.getAge());
 	}
 	
 	@Test
 	public void testGetAge31December() {
-		user.setDateOfBirthday(dateOfBirthday31December);
+		user.setDateOfBirth(dateOfBirthday31December);
 		assertEquals(this.dateOfBirthday31DecemberCorrect, user.getAge());
 	}
 	
 	@Test
 	public void testGetAgeNotLeap28Feb() {
-		user.setDateOfBirthday(this.dateOfBirthdayNotLeapYear28Feb);
+		user.setDateOfBirth(this.dateOfBirthdayNotLeapYear28Feb);
 		assertEquals(this.dateOfBirthdayNotLeap28FebCorrect, user.getAge());
 	}
 	@Test
 	public void testGetAgeNotLeap1Mart() {
-		user.setDateOfBirthday(this.dateOfBirthdayNotLeapYear1Mart);
+		user.setDateOfBirth(this.dateOfBirthdayNotLeapYear1Mart);
 		assertEquals(this.dateOfBirthdayNotLeap1MartCorrect, user.getAge());
 	}
 	
 	@Test
 	public void testGetAgeLeap28Feb() {
-		user.setDateOfBirthday(this.dateOfBirthdayLeapYear28Feb);
+		user.setDateOfBirth(this.dateOfBirthdayLeapYear28Feb);
 		assertEquals(this.dateOfBirthdayLeap28FebCorrect, user.getAge());
 	}
 	
 	@Test
 	public void testGetAgeLeap1Mart() {
-		user.setDateOfBirthday(this.dateOfBirthdayLeapYear1Mart);
+		user.setDateOfBirth(this.dateOfBirthdayLeapYear1Mart);
 		assertEquals(this.dateOfBirthdayLeap1MartCorrect, user.getAge());
 	}
 	
 	@Test
 	public void testGetAgeLeap29Feb() {
-		user.setDateOfBirthday(this.dateOfBirthdayLeapYear29Feb);
+		user.setDateOfBirth(this.dateOfBirthdayLeapYear29Feb);
 		assertEquals(this.dateOfBirthday29FebCorrect, user.getAge());
 	}
 	
 	@Test
 	public void testGetAgeCurrentDay() {
-		user.setDateOfBirthday(this.dateOfBirthdayCurrentDay);
+		user.setDateOfBirth(this.dateOfBirthdayCurrentDay);
 		assertEquals(this.dateOfBirthdayCurrentDayCorrect, user.getAge());
 	}
 	
 	@Test
 	public void testGetAgeNextDay() {
-		user.setDateOfBirthday(this.dateOfBirthdayNextDay);
+		user.setDateOfBirth(this.dateOfBirthdayNextDay);
 		assertEquals(this.dateOfBirthdayNextDayCorrect, user.getAge());
 	}
 	
 	@Test
 	public void testGetAgePrevDay() {
-		user.setDateOfBirthday(this.dateOfBirthdayPrevDay);
+		user.setDateOfBirth(this.dateOfBirthdayPrevDay);
 		assertEquals(this.dateOfBirthdayPrevDayCorrect, user.getAge());
 	}
 	

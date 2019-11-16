@@ -7,7 +7,7 @@ public class User {
 	private Long id;
 	private String firstName;
 	private String lastName;
-	private Date dateOfBirthday;
+	private Date dateOfBirth;
 	
 	public Long getId() {
 		return id;
@@ -27,11 +27,11 @@ public class User {
 	public void setLastName(String lastName) {
 		this.lastName = lastName;
 	}
-	public Date getDateOfBirthday() {
-		return dateOfBirthday;
+	public Date getDateOfBirth() {
+		return dateOfBirth;
 	}
-	public void setDateOfBirthday(Date dateOfBirthday) {
-		this.dateOfBirthday = dateOfBirthday;
+	public void setDateOfBirth(Date dateOfBirthday) {
+		this.dateOfBirth = dateOfBirthday;
 	}
 	
 	
@@ -51,7 +51,7 @@ public class User {
 		Integer currentYear = calendar.get(Calendar.YEAR);
 		Integer currentMonth = calendar.get(Calendar.MONTH);
 		Integer currentDay = calendar.get(Calendar.DAY_OF_MONTH);
-		calendar.setTime(dateOfBirthday);
+		calendar.setTime(dateOfBirth);
 		Integer year = calendar.get(Calendar.YEAR);
 		Integer month = calendar.get(Calendar.MONTH);
 		Integer day = calendar.get(Calendar.DAY_OF_MONTH); // берём день месяца, а не года,
