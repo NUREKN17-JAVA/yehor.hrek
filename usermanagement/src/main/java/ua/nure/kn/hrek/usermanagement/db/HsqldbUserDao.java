@@ -12,7 +12,7 @@ import java.util.LinkedList;
 
 import ua.nure.kn.hrek.usermanagement.User;
 
-public class HsqldbUserDao implements UserDao {
+class HsqldbUserDao implements UserDao {
 
 	private ConnectionFactory connectionFactory;
 
