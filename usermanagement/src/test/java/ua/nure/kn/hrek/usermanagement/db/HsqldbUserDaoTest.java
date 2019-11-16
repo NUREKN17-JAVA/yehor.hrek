@@ -44,11 +44,11 @@ class HsqldbUserDaoTest extends DatabaseTestCase {
 			fail(e.toString());
 		}
 	}
-	
+
 	@Test
 	public void testFindAll() {
 		try {
-			Collection collection  = dao.findAll();
+			Collection collection = dao.findAll();
 			assertNotNull("Collection is null", collection);
 			assertEquals("Collection size.", 2, collection.size());
 		} catch (DatabaseException e) {
@@ -56,18 +56,17 @@ class HsqldbUserDaoTest extends DatabaseTestCase {
 			fail(e.toString());
 		}
 	}
-	
-	
+
 	@Override
 	protected IDatabaseConnection getConnection() throws Exception {
-		connectionFactory = new ConnectionFactoryImpl();
+		connectionFactory = new ConnectionFactoryImpl("org.hsqldb.jdbcDriver", "jdbc:hsqldb:file:db/usermanagement",
+				"sa", "");
 		return new DatabaseConnection(connectionFactory.createConnection());
 	}
 
 	@Override
 	protected IDataSet getDataSet() throws Exception {
-		IDataSet dataSet = new XmlDataSet(getClass()
-				.getClassLoader().getResourceAsStream("usersDataSet.xml"));
+		IDataSet dataSet = new XmlDataSet(getClass().getClassLoader().getResourceAsStream("usersDataSet.xml"));
 		return dataSet;
 	}
 
