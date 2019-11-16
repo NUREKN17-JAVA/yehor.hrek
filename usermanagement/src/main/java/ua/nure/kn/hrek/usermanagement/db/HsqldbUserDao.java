@@ -19,9 +19,21 @@ public class HsqldbUserDao implements UserDao {
 	private String INSERT_QUERY = "INSERT INTO users (firstname, lastname, dateofbirth) VALUES(?, ?, ?);";
 	private String SELECT_ALL_QUERY = "SELECT id, firstname, lastname, dateofbirth FROM users;";
 	
+	public HsqldbUserDao() {
+	}
+
 	public HsqldbUserDao(ConnectionFactory connectionFactory) {
 		this.connectionFactory = connectionFactory;
 	}
+	
+	public ConnectionFactory getConnectionFactory() {
+		return connectionFactory;
+	}
+
+	public void setConnectionFactory(ConnectionFactory connectionFactory) {
+		this.connectionFactory = connectionFactory;
+	}
+
 
 	public User create(User user) throws DatabaseException {
 
