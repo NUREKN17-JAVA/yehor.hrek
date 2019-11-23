@@ -174,5 +174,4 @@ class HsqldbUserDao implements UserDao {
 		}
 		return result;
 	}
-
 }
