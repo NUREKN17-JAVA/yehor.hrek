@@ -20,6 +20,7 @@ class HsqldbUserDao implements UserDao {
 	private String UPDATE_QUERY = "UPDATE users SET firstname = ?, lastname = ?, dateofbirth = ? WHERE id = ?";
 	private String DELETE_QUERY = "DELETE FROM users WHERE id = ?";
 	private String FIND_QUERY = "SELECT * FROM users WHERE id = ?";
+	private String FIND_BY_NAMES_QUERY = "SELECT * FROM users WHERE firstname = ? and lastname = ?";
 	private String SELECT_ALL_QUERY = "SELECT id, firstname, lastname, dateofbirth FROM users;";
 
 	public HsqldbUserDao() {
@@ -130,6 +131,34 @@ class HsqldbUserDao implements UserDao {
 			Connection connection = connectionFactory.createConnection();
 			Statement statement = connection.createStatement();
 			ResultSet resultSet = statement.executeQuery(SELECT_ALL_QUERY);
+			while (resultSet.next()) {
+				User user = new User();
+				user.setId(new Long(resultSet.getLong(1)));
+				user.setLastName(resultSet.getString(2));
+				user.setFirstName(resultSet.getString(3));
+				user.setDateOfBirth(resultSet.getDate(4));
+				result.add(user);
+			}
+		} catch (DatabaseException e) {
+			throw e;
+		} catch (SQLException e) {
+			throw new DatabaseException(e);
+		}
+		return result;
+	}
+
+	@Override
+	public Collection find(String firstName, String lastName) throws DatabaseException {
+		Collection result = new LinkedList();
+
+		try {
+			Connection connection = connectionFactory.createConnection();
+			PreparedStatement preparedStatement = connection.prepareStatement(FIND_BY_NAMES_QUERY);
+
+			preparedStatement.setString(1, firstName);
+			preparedStatement.setString(2, lastName);
+			ResultSet resultSet = preparedStatement.executeQuery();
+			
 			while (resultSet.next()) {
 				User user = new User();
 				user.setId(new Long(resultSet.getLong(1)));
