@@ -50,4 +50,19 @@ public class MainFrame extends JFrame {
 
 	}
 
+	public void showAddPanel() {
+		showPanel(getAddPanel());
+		
+	}
+
+	private void showPanel(JPanel panel) {
+		
+	}
+
+	
+	private AddPanel getAddPanel() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 }
