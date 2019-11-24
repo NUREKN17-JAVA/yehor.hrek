@@ -15,7 +15,7 @@ import junit.extensions.jfcunit.JFCTestCase;
 import junit.extensions.jfcunit.JFCTestHelper;
 import junit.extensions.jfcunit.finder.NamedComponentFinder;
 
-class MainFrameTest extends JFCTestCase {
+public class MainFrameTest extends JFCTestCase {
 
 	private MainFrame mainFrame;
 
@@ -44,6 +44,7 @@ class MainFrameTest extends JFCTestCase {
 		
 		return component;
 	}
+	
 	@Test
 	public void testBrowseControls() {
 		find(JPanel.class, "browsePanel");
@@ -53,6 +54,5 @@ class MainFrameTest extends JFCTestCase {
 		find(JButton.class, "deleteButton");
 		find(JButton.class, "detailsButton");
 	}
-	
 
 }
