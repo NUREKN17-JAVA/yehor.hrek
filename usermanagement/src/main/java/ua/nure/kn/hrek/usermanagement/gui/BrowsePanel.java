@@ -50,6 +50,7 @@ public class BrowsePanel extends JPanel implements ActionListener {
 			detailsButton = new JButton();
 			detailsButton.setText("Детали");
 			detailsButton.setName("detailsButton");
+			addButton.setActionCommand("details");
 			detailsButton.addActionListener(this);
 		}
 		return detailsButton;
@@ -60,6 +61,7 @@ public class BrowsePanel extends JPanel implements ActionListener {
 			deleteButton = new JButton();
 			deleteButton.setText("Удалить");
 			deleteButton.setName("deleteButton");
+			addButton.setActionCommand("delete");
 			deleteButton.addActionListener(this);
 		}
 		return deleteButton;
@@ -70,6 +72,7 @@ public class BrowsePanel extends JPanel implements ActionListener {
 			editButton = new JButton();
 			editButton.setText("Редактировать");
 			editButton.setName("editButton");
+			addButton.setActionCommand("edit");
 			editButton.addActionListener(this);
 		}
 		return editButton;
@@ -80,6 +83,7 @@ public class BrowsePanel extends JPanel implements ActionListener {
 			addButton = new JButton();
 			addButton.setText("Добавить");
 			addButton.setName("addButton");
+			addButton.setActionCommand("add");
 			addButton.addActionListener(this);
 		}
 		return addButton;
