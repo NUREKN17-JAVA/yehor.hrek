@@ -7,24 +7,31 @@ import java.awt.Container;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
+import ua.nure.kn.hrek.usermanagement.db.DaoFactory;
+import ua.nure.kn.hrek.usermanagement.db.UserDao;
+import ua.nure.kn.hrek.usermanagement.util.Messages;
+
 public class MainFrame extends JFrame {
 
 	
 	private static final int FRAME_HEIGHT = 600;
 	private static final int FRAME_WIDTH = 800;
 	private JPanel contentPanel;
-	private Component browsePanel;
+	private JPanel browsePanel;
 	private AddPanel addPanel;
+	private UserDao dao;
+	
 
 	public MainFrame() {
 		super();
+		dao = DaoFactory.getInstance().getUserDao();
 		initialize();
 	}
 	
 	private void initialize() {
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		this.setSize(FRAME_WIDTH, FRAME_HEIGHT);
-		this.setTitle("Управление пользователями");
+		this.setTitle(Messages.getString("MainFrame.user_management")); //$NON-NLS-1$
 		this.setContentPane(getContentPanel());
 	}
 
@@ -38,10 +45,11 @@ public class MainFrame extends JFrame {
 		}
 		return contentPanel;
 	}
-	private Component getBrowsePanel() {
+	private JPanel getBrowsePanel() {
 		if(browsePanel == null) {
 			browsePanel = new BrowsePanel(this);
 		}
+		((BrowsePanel)browsePanel).initTable();
 		return browsePanel;
 	}
 
@@ -68,6 +76,14 @@ public class MainFrame extends JFrame {
 			addPanel = new AddPanel(this);
 		}
 		return addPanel;
+	}
+	
+	public void showBrowsePanel() {
+		showPanel(getBrowsePanel());
+	}
+
+	public UserDao getDao() {
+		return dao;
 	}
 
 }
