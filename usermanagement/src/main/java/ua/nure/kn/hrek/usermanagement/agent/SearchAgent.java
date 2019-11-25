@@ -33,8 +33,6 @@ public class SearchAgent extends Agent {
 			e.printStackTrace();
 		}
 		
-		addBehaviour(new RequestServer());
-		
 		addBehaviour(new TickerBehaviour(this, 60000) {
 			
 			@Override
@@ -46,11 +44,17 @@ public class SearchAgent extends Agent {
 				try {
 					DFAgentDescription[] descriptions = DFService.search(myAgent, agentDescription);
 					aids = new AID[descriptions.length];
+					for(int i = 0; i < descriptions.length; i++) {
+						DFAgentDescription d = descriptions[i];
+						aids[i] = d.getName();
+					}
 				}catch (FIPAException e) {
 					e.printStackTrace();
 				}
 			}
 		});
+		
+		addBehaviour(new RequestServer());
 	}
 
 	@Override
