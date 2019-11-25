@@ -2,6 +2,7 @@ package ua.nure.kn.hrek.usermanagement.agent;
 
 import java.util.Collection;
 
+import jade.core.AID;
 import jade.core.Agent;
 import ua.nure.kn.hrek.usermanagement.db.DaoFactory;
 import ua.nure.kn.hrek.usermanagement.db.DatabaseException;
