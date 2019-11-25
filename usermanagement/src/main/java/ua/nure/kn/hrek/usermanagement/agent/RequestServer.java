@@ -1,9 +1,15 @@
 package ua.nure.kn.hrek.usermanagement.agent;
 
+import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Iterator;
+import java.util.StringTokenizer;
 
 import jade.core.behaviours.CyclicBehaviour;
 import jade.lang.acl.ACLMessage;
+import ua.nure.kn.hrek.usermanagement.User;
+import ua.nure.kn.hrek.usermanagement.db.DaoFactory;
+import ua.nure.kn.hrek.usermanagement.db.DatabaseException;
 
 public class RequestServer extends CyclicBehaviour {
 
@@ -28,8 +34,31 @@ public class RequestServer extends CyclicBehaviour {
 	}
 
 	private ACLMessage createReply(ACLMessage message) {
-		// TODO Auto-generated method stub
-		return null;
+		ACLMessage reply = message.createReply();
+		
+		String content = message.getContent();
+		StringTokenizer tokenizer = new StringTokenizer(content);
+		if(tokenizer.countTokens() == 2) {
+			String firstName = tokenizer.nextToken();
+			String lastName = tokenizer.nextToken();
+			Collection users = null;
+			try {
+				users = DaoFactory.getInstance().getUserDao().find(firstName, lastName);
+			}catch (DatabaseException e) {
+				e.printStackTrace();
+				users = new ArrayList(0);
+			}
+			StringBuffer buffer = new StringBuffer();
+			for(Iterator it = users.iterator(); it.hasNext();){
+			    User user = (User) it.next();
+			    buffer.append(user.getId()).append(",");
+			    buffer.append(user.getFirstName()).append(",");
+			    buffer.append(user.getLastName()).append(";");
+			}
+			reply.setContent(buffer.toString());
+		}
+		
+		return reply;
 	}
 
 }
