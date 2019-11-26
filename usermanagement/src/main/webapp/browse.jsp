@@ -26,5 +26,10 @@
 	<input type="submit" name="deleteButton" value="Delete">
 	<input type="submit" name="detailsButton" value="Details">
 	</form>
+<c:if test="${reqquestScope.error != null}">
+	<script type="text/javascript">
+		alert('${reqquestScope.error}')
+	</script>
+</c:if>
 </body>
 </html>
